@@ -23,7 +23,7 @@
                     <h2 class="post__title">{{ post.title }}</h2>
                     <p class="post__meta">
                         ارسال شده توسط
-                        <span class="post__author">{{ post.author }}</span>
+                        <a class="post__author" href="{% url 'author_posts' post.author%}">{{ post.author }}</a>
                         در تاریخ
                         <time class="post__date" datetime="2018-02-21T12:47:59.116Z"> {{ post.created_at }} </time>
                     </p>
