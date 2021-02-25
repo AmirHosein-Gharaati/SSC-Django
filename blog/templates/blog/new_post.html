@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <form action="{% url 'new_post' %}" method="post">
+    {% csrf_token %}
+        {% if not user.is_authenticated %}
+            <label for="author">نویسنده:</label>
+            <input name="author" id="author">
+        {% endif %}
+        <label for="title">عنوان:</label>
+        <input name="title" id="title">
+        <label for="content">محتوا:</label>
+        <input name="content" id="content">
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

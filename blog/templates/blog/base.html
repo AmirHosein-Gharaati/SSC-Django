@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>بلاگ من | صفحه نخست</title>
+    <link rel="stylesheet" href="/static/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/static/stylesheets/style.css">
+    <meta name="description" content="صفحه پروژه وبلاگ آماده شده برای ورکشاپ SSC Django 2021">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="header__title">وبلاگ من</h1>
+        <p class="header__info">وبلاگ نمونه برای ورکشاپ SSC Django 2021</p>
+    </header>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+        <nav class="sidebar">
+            <h3>لینک‌های بلاگ</h3>
+            <ul class="sitelinks">
+                <li><a class="sitelinks__link" href="">صفحه نخست</a></li>
+                <li><a class="sitelinks__link" href="">درباره من</a></li>
+                <li><a class="sitelinks__link" href="">تماس با من</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <footer class="footer">
+        <p> منتشر شده تحت لیسانس <a href="LICENSE.md" target="_blank">MIT</a>. سورس‌ کد روی <a href="https://github.com/borna75rz/SSC-Django" target="_blank">پروژه‌ی گیت</a>.</p>
+    </footer>
+</body>
+</html>
