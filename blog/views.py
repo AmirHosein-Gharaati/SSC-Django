@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.views import View
+from django.views.generic import ListView
 
 from blog.models import Post
 
@@ -15,8 +17,11 @@ def all_posts(request, author=None):
                   request=request)
 
 
-def new_post(request):
-    if request.method == 'POST':
+class NewPost(View):
+    def get(self, request):
+        return render(request, 'blog/new_post.html')
+
+    def post(self, request):
         title = request.POST.get('title')
         content = request.POST.get('content')
         if not request.user.is_authenticated:
@@ -27,4 +32,11 @@ def new_post(request):
         post.save()
         return HttpResponseRedirect('/blogs')
 
-    return render(request, 'blog/new_post.html')
+
+class AllPosts(ListView):
+    template_name = 'blog/index.html'
+    context_object_name = 'posts'
+
+    def get_queryset(self):
+        author = self.kwargs.get('author')
+        return Post.objects.all() if not author else Post.objects.filter(author=author)
