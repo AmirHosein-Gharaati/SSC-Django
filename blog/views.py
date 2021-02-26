@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -30,6 +31,8 @@ class NewPost(View):
             author = request.user.username
         post = Post(title=title, content=content, author=author)
         post.save()
+        messages.add_message(request, messages.INFO, "CREATED THANK YOU")
+
         return HttpResponseRedirect('/blogs')
 
 
